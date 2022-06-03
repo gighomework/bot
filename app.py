@@ -18,7 +18,7 @@ from linebot import (
 
 app = Flask(__name__)
 
-lineaccesstoken = 'EUreS4urZHYaKl+r0Hc9WVJaG03NvyeCPx6iAn/kQyiXz6nxpvipc3T77DV7mMzrQ7SABUzH/J6G7ReeCFlgM0xQG388iOrY4e5WKZ6m2rNoCZiNl0PV5DutsEf4e5WKZ6m2rNoCZiNl8PV5DutsEfh04'
+lineaccesstoken = 'MMQjdcmKGYTXb21guAmbnFppUzsJbCuDloq7dsRUqOiCRccsMPUBOfuPhawY735yQ7SABUzH/J6G7ReeCFlgM0xQG388iOrY4e5WKZ6m2rPB9luNHWPPsD6+q5cd0d2NGNKdPDf+QummHK05ecXV/QdB04t89/1O/w1cDnyilFU='
 line_bot_api = LineBotApi(lineaccesstoken)
 
 casedata = pd.read_excel('casedata.xlsx')
