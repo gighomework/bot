@@ -4,6 +4,7 @@
 ###
 from flask import Flask, jsonify, render_template, request
 import json
+import ezsheets
 import numpy as np
 import pandas as pd
 import requests
@@ -18,7 +19,8 @@ from linebot import (
 
 app = Flask(__name__)
 
-libot = 'https://docs.google.com/spreadsheets/d/13W9pJ06FWMgwL5rK52kpzP0eJNT_mF2lUj1Qefowl00/edit?usp=drivesdk'
+sheet = ezsheets.Spreadsheet('13W9pJ06FWMgwL5rK52kpzP0eJNT_mF2lUj1Qefowl00')
+
 lineaccesstoken = 'MMQjdcmKGYTXb21guAmbnFppUzsJbCuDloq7dsRUqOiCRccsMPUBOfuPhawY735yQ7SABUzH/J6G7ReeCFlgM0xQG388iOrY4e5WKZ6m2rPB9luNHWPPsD6+q5cd0d2NGNKdPDf+QummHK05ecXV/QdB04t89/1O/w1cDnyilFU='
 line_bot_api = LineBotApi(lineaccesstoken)
 
@@ -92,8 +94,9 @@ def event_handle(event):
     return ''
 
 
-dat = pd.read_excel('libot')
+dat = pd.read_excel(sheet)
 def getdata(query):
+    print(sheet)
     res = dat[dat['QueryWord']==query]
     if len(res)==0:
         return 'nodata'
