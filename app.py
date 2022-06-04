@@ -93,7 +93,7 @@ def event_handle(event):
     return ''
 
 
-dat = pd.read_excel('https://github.com/gighomework/bot/blob/dcc0455922e3268e5ed85ae465fa46ed93b4b081/gig.xlsx')
+dat = pd.read_excel('gig.xlsx')
 def getdata(query):
     res = dat[dat['QueryWord']==query]
     if len(res)==0:
