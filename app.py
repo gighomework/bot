@@ -108,65 +108,121 @@ def getdata(query):
 def flexmessage(query):
     res = getdata(query)
     if res == 'nodata':
-        return 'nodata'
+        return ''
     else:
         productName,imgUrl,desc,cont = res
     flex = '''
+   {
+  "type": "carousel",
+  "contents": [
     {
-        "type": "bubble",
-        "hero": {
-          "type": "image",
-          "url": "%s",
-          "margin": "none",
-          "size": "full",
-          "aspectRatio": "1:1",
-          "aspectMode": "cover",
-          "action": {
-            "type": "uri",
-            "label": "Action",
-            "uri": "https://linecorp.com"
-          }
-        },
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "md",
-          "action": {
-            "type": "uri",
-            "label": "Action",
-            "uri": "https://linecorp.com"
-          },
-          "contents": [
-            {
-              "type": "text",
-              "text": "%s",
-              "size": "xl",
-              "weight": "bold"
+      "type": "bubble",
+      "size": "giga",
+      "hero": {
+        "type": "image",
+        "url": "%s",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "2:2.5"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "สมัครสมาชิก",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://bit.ly/3xbb5VC"
             },
-            {
-              "type": "text",
-              "text": "%s",
-              "wrap": true
-            }
-          ]
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "button",
-              "action": {
-                "type": "postback",
-                "label": "ติดต่อคนขาย",
-                "data": "%s"
-              },
-              "color": "#F67878",
-              "style": "primary"
-            }
-          ]
+            "weight": "bold",
+            "align": "center",
+            "color": "#ffffff"
+          }
+        ],
+        "background": {
+          "type": "linearGradient",
+          "angle": "90deg",
+          "startColor": "#e52d27",
+          "endColor": "#b31217"
         }
-      }'''%(imgUrl,productName,desc,cont)
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "giga",
+      "hero": {
+        "type": "image",
+        "url": "%s",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "2:2.5"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ติดต่อแอดมิน",
+            "align": "center",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://bit.ly/38bfrT5"
+            },
+            "weight": "bold"
+          }
+        ],
+        "background": {
+          "type": "linearGradient",
+          "angle": "90deg",
+          "startColor": "#2980b9",
+          "endColor": "#ffffff",
+          "centerColor": "#6dd5fa"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "giga",
+      "hero": {
+        "type": "image",
+        "url": "%s",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "2:2.5"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ติดต่อโฆษณา",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "%s"
+            },
+            "align": "center",
+            "weight": "bold",
+            "color": "#000000"
+          }
+        ],
+        "background": {
+          "type": "linearGradient",
+          "angle": "90deg",
+          "startColor": "#40E0D0",
+          "endColor": "#FF0080",
+          "centerColor": "#FF8C00"
+        }
+      }
+    }
+  ]
+}'''%(imgUrl,productName,desc,cont)
     return flex
 
 from linebot.models import (TextSendMessage,FlexSendMessage)
